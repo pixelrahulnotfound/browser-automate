@@ -1,4 +1,4 @@
-import { ClerkProvider, SignInButton, SignUpButton, Show, UserButton } from "@clerk/nextjs"
+import { ClerkProvider } from "@clerk/nextjs"
 import { shadcn } from "@clerk/ui/themes"
 import { Geist, Geist_Mono } from "next/font/google"
 
@@ -34,22 +34,6 @@ export default function RootLayout({
         <ClerkProvider appearance={{ theme: shadcn }}>
           <ThemeProvider>
             <div className="flex flex-col min-h-screen">
-              <header className="flex justify-between items-center p-4 border-b border-border bg-background">
-                <span className="font-semibold text-lg">NextAuth Demo</span>
-                <div className="flex gap-4 items-center">
-                  <Show when="signed-out">
-                    <SignInButton mode="modal">
-                      <button className="px-4 py-2 text-sm font-medium border rounded-md hover:bg-muted cursor-pointer transition-colors">Sign In</button>
-                    </SignInButton>
-                    <SignUpButton mode="modal">
-                      <button className="px-4 py-2 text-sm font-medium bg-primary text-primary-foreground rounded-md hover:opacity-90 cursor-pointer transition-colors">Sign Up</button>
-                    </SignUpButton>
-                  </Show>
-                  <Show when="signed-in">
-                    <UserButton />
-                  </Show>
-                </div>
-              </header>
               <main className="flex-1">
                 {children}
               </main>
@@ -61,3 +45,4 @@ export default function RootLayout({
     </html>
   )
 }
+
